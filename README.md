@@ -11,5 +11,5 @@ LightPyEnv --install    #初始化
 LightPyEnv -p D:\Python    #你的所有Python版本需要放在同一个目录下
 </br>
 LightPyEnv -g Python311    #Python311是在Python目录下的 目录名称
-</br?
-![image](https://github.com/user-attachments/assets/63b9df7e-858e-4062-85f8-67e83b398638)
+</br>
+<img src="https://github.com/user-attachments/assets/f0647aa8-8ad9-4236-8d1d-a4b22877d3da" alt="成功切换python版本效果"/>
