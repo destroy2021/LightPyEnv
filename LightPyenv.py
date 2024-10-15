@@ -15,6 +15,7 @@ config = RegConfig.RegConfig("LightPyenv")
 reg_currentPython = "currentPython"
 reg_envPath = "envPath"
 reg_pythonsDir = "pythonsDir"
+reg_runPath = "runPath"
 def isRunByAdmin():
 	return ctypes.windll.shell32.IsUserAnAdmin()
 
@@ -40,14 +41,23 @@ def uninstall():
     if isRunByAdmin() == 0:
         print("请使用管理员运行此命令")
         return
+    runPath = config.getConfig(reg_runPath)
+    if runPath == False:
+        print("还没有执行install")
+        return
     envPath = config.getConfig(reg_envPath)
     if envPath == False:
         print("已删除.LightPyEnv")
         return
     try:
+        #移除环境变量
+        RegConfig.addOrRemoveGlobalEnvironment(envPath,0)
+        RegConfig.addOrRemoveGlobalEnvironment(runPath,0)
+        print("已删除环境变量")
         shutil.rmtree(envPath)
         print("已删除.LightPyEnv")
         config.clearConfig()
+        print("已清空注册表配置")
     except Exception as e:
         print(f"Uninstall Error: {e}")
         return
@@ -64,7 +74,10 @@ def install():
             os.mkdir(envDirName)
         except FileExistsError:
             print(f"{envDirName} exist")
-        envPath = os.path.join(os.getcwd(),envDirName)
+        runPath = os.getcwd()
+        envPath = os.path.join(runPath,envDirName)
+        config.setConfig(reg_runPath,runPath)
+        RegConfig.addOrRemoveGlobalEnvironment(runPath)
         RegConfig.addOrRemoveGlobalEnvironment(envPath)
         config.setConfig(reg_envPath,envPath)
     except Exception as e:
