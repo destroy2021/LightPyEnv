@@ -308,12 +308,12 @@
   ('pythoncom',
    'D:\\Python\\Python311\\Lib\\site-packages\\pythoncom.py',
    'PYMODULE'),
+  ('_py_abc', 'D:\\Python\\Python311\\Lib\\_py_abc.py', 'PYMODULE'),
+  ('stringprep', 'D:\\Python\\Python311\\Lib\\stringprep.py', 'PYMODULE'),
+  ('tracemalloc', 'D:\\Python\\Python311\\Lib\\tracemalloc.py', 'PYMODULE'),
   ('shutil', 'D:\\Python\\Python311\\Lib\\shutil.py', 'PYMODULE'),
   ('tarfile', 'D:\\Python\\Python311\\Lib\\tarfile.py', 'PYMODULE'),
   ('gzip', 'D:\\Python\\Python311\\Lib\\gzip.py', 'PYMODULE'),
-  ('tracemalloc', 'D:\\Python\\Python311\\Lib\\tracemalloc.py', 'PYMODULE'),
-  ('_py_abc', 'D:\\Python\\Python311\\Lib\\_py_abc.py', 'PYMODULE'),
-  ('stringprep', 'D:\\Python\\Python311\\Lib\\stringprep.py', 'PYMODULE'),
   ('termcolor',
    'D:\\Python\\Python311\\Lib\\site-packages\\termcolor\\__init__.py',
    'PYMODULE'),
@@ -381,38 +381,7 @@
    'D:\\Python\\Python311\\Lib\\site-packages\\win32comext\\shell\\shell.pyd',
    'EXTENSION'),
   ('_ctypes.pyd', 'D:\\Python\\Python311\\DLLs\\_ctypes.pyd', 'EXTENSION'),
-  ('api-ms-win-crt-time-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-time-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-process-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-process-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-stdio-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-stdio-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-locale-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-locale-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-convert-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-convert-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-string-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-string-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-math-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-math-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-conio-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-crt-conio-l1-1-0.dll',
-   'BINARY'),
+  ('VCRUNTIME140.dll', 'D:\\Python\\Python311\\VCRUNTIME140.dll', 'BINARY'),
   ('api-ms-win-crt-environment-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-crt-environment-l1-1-0.dll',
@@ -429,7 +398,38 @@
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-crt-runtime-l1-1-0.dll',
    'BINARY'),
-  ('VCRUNTIME140.dll', 'D:\\Python\\Python311\\VCRUNTIME140.dll', 'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
   ('api-ms-win-crt-utility-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-crt-utility-l1-1-0.dll',
@@ -447,49 +447,17 @@
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-crt-multibyte-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-file-l2-1-0.dll',
+  ('api-ms-win-core-memory-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-file-l2-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-file-l1-2-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-file-l1-2-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-libraryloader-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-libraryloader-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-file-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-file-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-interlocked-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-interlocked-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processenvironment-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-processenvironment-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-console-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-console-l1-1-0.dll',
+   'Software\\Clients\\api-ms-win-core-memory-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-debug-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-core-debug-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+  ('api-ms-win-core-handle-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-errorhandling-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processthreads-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-processthreads-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-localization-l1-2-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-localization-l1-2-0.dll',
+   'Software\\Clients\\api-ms-win-core-handle-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-datetime-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
@@ -499,37 +467,29 @@
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-core-timezone-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-heap-l1-1-0.dll',
+  ('api-ms-win-core-util-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-heap-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'Software\\Clients\\api-ms-win-core-util-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-namedpipe-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-core-namedpipe-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-synch-l1-1-0.dll',
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-synch-l1-1-0.dll',
+   'Software\\Clients\\api-ms-win-core-processthreads-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-string-l1-1-0.dll',
+  ('api-ms-win-core-heap-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-string-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-util-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-util-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-handle-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-handle-l1-1-0.dll',
+   'Software\\Clients\\api-ms-win-core-heap-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-sysinfo-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-file-l2-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-processthreads-l1-1-1.dll',
    'C:\\Program Files\\VanDyke '
@@ -539,13 +499,53 @@
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-core-synch-l1-2-0.dll',
    'BINARY'),
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-interlocked-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-processenvironment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-libraryloader-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-synch-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-string-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-2-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-file-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-console-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-console-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'C:\\Program Files\\VanDyke '
+   'Software\\Clients\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'BINARY'),
   ('api-ms-win-core-profile-l1-1-0.dll',
    'C:\\Program Files\\VanDyke '
    'Software\\Clients\\api-ms-win-core-profile-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-memory-l1-1-0.dll',
-   'C:\\Program Files\\VanDyke '
-   'Software\\Clients\\api-ms-win-core-memory-l1-1-0.dll',
    'BINARY')],
  [],
  [],
