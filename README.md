@@ -12,4 +12,4 @@ LightPyEnv -p D:\Python    #你的所有Python版本需要放在同一个目录�
 </br>
 LightPyEnv -g Python311    #Python311是在Python目录下的 目录名称
 </br?
-![image](https://github.com/user-attachments/assets/f1ff1934-3c97-42ef-96fe-0b7c746bd037)
+![image](https://github.com/user-attachments/assets/63b9df7e-858e-4062-85f8-67e83b398638)
