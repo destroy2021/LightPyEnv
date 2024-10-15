@@ -7,6 +7,7 @@ import re
 import subprocess
 import winshell
 from termcolor import colored
+import shutil  # shutil全称是shell utilities
 
 envDirName = ".lightPyenv"
 config = RegConfig.RegConfig("LightPyenv")
@@ -40,10 +41,12 @@ def uninstall():
         print("请使用管理员运行此命令")
         return
     envPath = config.getConfig(reg_envPath)
-    if envPath is None:
+    if envPath == False:
+        print("已删除.LightPyEnv")
         return
     try:
-        os.rmdir(envPath)
+        shutil.rmtree(envPath)
+        print("已删除.LightPyEnv")
         config.clearConfig()
     except Exception as e:
         print(f"Uninstall Error: {e}")
