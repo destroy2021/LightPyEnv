@@ -13,6 +13,7 @@ envDirName = ".lightPyenv"
 config = RegConfig.RegConfig("LightPyenv")
 
 reg_currentPython = "currentPython"
+reg_pipDir = "pipDir"
 reg_envPath = "envPath"
 reg_pythonsDir = "pythonsDir"
 reg_runPath = "runPath"
@@ -142,7 +143,11 @@ def listPython(path):
     pythonsDir = config.getConfig(reg_pythonsDir)
     print(f"当前pythons 目录: {pythonsDir}")
     envPath = config.getConfig(reg_envPath)
-    print(f"当前env目录: {envPath} \n")
+    print(f"当前env目录: {envPath}")
+    pipDir = config.getConfig(reg_pipDir)
+    if pipDir != False:
+        print(f"当前pip目录: {pipDir} \n")
+
     print("Python Versions: ")
     currentPython = config.getConfig(reg_currentPython)
     for pythonDir in pythonDirs:
@@ -166,7 +171,7 @@ def changePython(pythonVersion):
     isFind = False
     for pythonDir in pythonDirs:
         if pythonDir['pythonDir'].name == pythonVersion:
-            isFind = True
+            isFind = pythonDir
             targetPath = os.path.join(envPath,"python.bat")
             sourcePath = os.path.join(pythonDir['python'].path)
             create_bat(targetPath,sourcePath)
@@ -191,11 +196,21 @@ def changePython(pythonVersion):
                 sourcePath = os.path.join(pythonDir['pip'].path)
                 targetPath = os.path.join(envPath,"pip3.bat")
                 create_bat(targetPath,sourcePath)
-    if isFind:
+    if isFind != False:
         config.setConfig(reg_currentPython,pythonVersion)
         print(f"成功切换python版本为 {pythonVersion} ")
         os.system("python -V")
         os.system("pip -V")
+        print("\n")
+        print("[需要管理员权限] 尝试添加Scripts目录到环境变量 (使pip安装的脚本能运行)")
+        lastPipDir = config.getConfig(reg_pipDir)
+        if lastPipDir != False:
+            RegConfig.addOrRemoveGlobalEnvironment(lastPipDir,0)
+        if RegConfig.addOrRemoveGlobalEnvironment(isFind['pipdir']):
+            config.setConfig(reg_pipDir,isFind['pipdir'])
+            print(f"成功添加pipdir {isFind['pipdir']}, 重启cmd后生效")
+        else:
+            print("添加pipdir失败，是否以管理员身份运行")
     else:
         print(f"没有找到版本 {pythonVersion}")
     return isFind

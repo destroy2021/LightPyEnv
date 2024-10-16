@@ -60,15 +60,16 @@ class RegConfig:
         return False
 
 # oper = 1 添加，oper = 0 移除，系统环境变量Path
-def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1) -> None:
+def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1):
     # 注册表路径
     reg_path = r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
+    isAddKey = False
+    isNotify = False
     try:
         # 打开注册表的系统环境变量部分
         reg_key = reg.OpenKey(reg.HKEY_LOCAL_MACHINE, reg_path, 0, reg.KEY_SET_VALUE | reg.KEY_READ)
         # 获取当前的 PATH 变量
         current_path, _ = reg.QueryValueEx(reg_key, 'Path')
-
         # 添加到Path中
         if oper == 1:
             if new_path not in current_path:
@@ -77,6 +78,7 @@ def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1) -> None:
                 new_path_value = new_path + current_path
                 reg.SetValueEx(reg_key, 'Path', 0, reg.REG_EXPAND_SZ, new_path_value)
                 print(f"Successfully added {new_path} to system PATH.")
+                isAddKey = True
             else:
                 print(f"Warning: {new_path} is already in the system PATH.")
         else:
@@ -87,6 +89,7 @@ def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1) -> None:
                 new_path_value = current_path.replace(new_path, '')
                 reg.SetValueEx(reg_key, 'Path', 0, reg.REG_EXPAND_SZ, new_path_value)
                 print(f"Successfully Remove {new_path} From system PATH.")
+                isAddKey = True
             else:
                 print(f"Warning: {new_path} is not in the system PATH.")
         reg.CloseKey(reg_key)
@@ -100,9 +103,11 @@ def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1) -> None:
                                                           SMTO_ABORTIFHUNG, 5000)
         if result:
             print("System has been notified about the PATH change.")
+            isNotify = True
         else:
             print("Failed to notify the system about the PATH change.")
     except PermissionError:
         print("You need to run this script as an administrator to modify system environment variables.")
     except Exception as e:
         print(f"Error: {e}")
+    return isAddKey and isNotify
