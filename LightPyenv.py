@@ -54,6 +54,9 @@ def uninstall():
         #移除环境变量
         RegConfig.addOrRemoveGlobalEnvironment(envPath,0)
         RegConfig.addOrRemoveGlobalEnvironment(runPath,0)
+        pipDir = config.getConfig(reg_pipDir)
+        if pipDir != False:
+            RegConfig.addOrRemoveGlobalEnvironment(pipDir,0)
         print("已删除环境变量")
         shutil.rmtree(envPath)
         print("已删除.LightPyEnv")
