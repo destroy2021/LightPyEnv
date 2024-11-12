@@ -60,40 +60,70 @@ class RegConfig:
         return False
 
 # oper = 1 添加，oper = 0 移除，系统环境变量Path
-def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1):
+def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1,python_path = "python"):
     # 注册表路径
     reg_path = r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
-    isAddKey = False
+    isOper = False
     isNotify = False
     try:
         # 打开注册表的系统环境变量部分
         reg_key = reg.OpenKey(reg.HKEY_LOCAL_MACHINE, reg_path, 0, reg.KEY_SET_VALUE | reg.KEY_READ)
         # 获取当前的 PATH 变量
         current_path, _ = reg.QueryValueEx(reg_key, 'Path')
-        # 添加到Path中
+
+        # 确保每个path以;结尾
+        if current_path.endswith(";") is not True:
+            current_path += ";"
+        # 将环境变量分割
+        current_path_list = current_path.split(";")
+
+        if new_path.endswith(';'):
+            new_path = new_path[:-1]
+
+        index = -1
+        if python_path is not False and python_path != "":
+            # 寻找是否有自定义python目录存在
+            for i in range(len(current_path_list)):
+                if python_path.lower() in current_path_list[i].lower():
+                    index = i
+                    break
+
+        # oper == 1表示添加，0 删除
         if oper == 1:
             if new_path not in current_path:
-                if new_path.endswith(';') == False:
-                    new_path += ";"
-                new_path_value = new_path + current_path
-                reg.SetValueEx(reg_key, 'Path', 0, reg.REG_EXPAND_SZ, new_path_value)
-                print(f"Successfully added {new_path} to system PATH.")
-                isAddKey = True
+                # 没有自定义python路径，则添加到末尾
+                if index == -1:
+                    current_path_list.append(new_path)
+                else:
+                    # 如果找到自定义的python路径，则添加到他前面
+                    current_path_list.insert(index, new_path)
             else:
                 print(f"Warning: {new_path} is already in the system PATH.")
         else:
-            # 从Path中移除
-            if new_path in current_path:
-                if new_path.endswith(';') == False:
-                    new_path += ";"
-                new_path_value = current_path.replace(new_path, '')
-                reg.SetValueEx(reg_key, 'Path', 0, reg.REG_EXPAND_SZ, new_path_value)
-                print(f"Successfully Remove {new_path} From system PATH.")
-                isAddKey = True
-            else:
-                print(f"Warning: {new_path} is not in the system PATH.")
-        reg.CloseKey(reg_key)
+            isRemoveKey = False
+            for i in range(len(current_path_list)):
+                if new_path == current_path_list[i]:
+                    current_path_list[i] = ""
+                    isRemoveKey = True
+            if isRemoveKey is not True:
+                print(f"Warning: Maybe already remove {new_path} from System PATH?")
 
+        new_path_value = ""
+        for path in current_path_list:
+            if path == "":
+                continue
+            new_path_value += path
+            new_path_value += ";"
+
+        if new_path_value == "":
+            print("Error: The new PATH is Empty")
+            reg.CloseKey(reg_key)
+            return False
+
+        reg.SetValueEx(reg_key, 'Path', 0, reg.REG_EXPAND_SZ, new_path_value)
+        print("Success set System Path Reg Value")
+        reg.CloseKey(reg_key)
+        isOper = True
         # 通知系统环境变量已更新（通过广播通知系统）
         import ctypes
         HWND_BROADCAST = 0xFFFF
@@ -110,4 +140,4 @@ def addOrRemoveGlobalEnvironment(new_path: str, oper: int = 1):
         print("You need to run this script as an administrator to modify system environment variables.")
     except Exception as e:
         print(f"Error: {e}")
-    return isAddKey and isNotify
+    return isOper and isNotify

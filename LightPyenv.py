@@ -154,7 +154,7 @@ def listPython(path):
     print("Python Versions: ")
     currentPython = config.getConfig(reg_currentPython)
     for pythonDir in pythonDirs:
-        if currentPython == pythonDir['pythonDir'].name:
+        if currentPython.lower() == pythonDir['pythonDir'].name.lower():
             print(f">>>> \t{pythonDir['pythonDir'].name} --> {pythonDir['version']} => {pythonDir['python'].path}")
         else:
             print(f"\t{pythonDir['pythonDir'].name} --> {pythonDir['version']} => {pythonDir['python'].path}")
@@ -173,7 +173,7 @@ def changePython(pythonVersion):
     pythonDirs = listPython(pythonsDir)
     isFind = False
     for pythonDir in pythonDirs:
-        if pythonDir['pythonDir'].name == pythonVersion:
+        if pythonDir['pythonDir'].name.lower() == pythonVersion.lower():
             isFind = pythonDir
             targetPath = os.path.join(envPath,"python.bat")
             sourcePath = os.path.join(pythonDir['python'].path)
@@ -199,12 +199,9 @@ def changePython(pythonVersion):
                 sourcePath = os.path.join(pythonDir['pip'].path)
                 targetPath = os.path.join(envPath,"pip3.bat")
                 create_bat(targetPath,sourcePath)
-    if isFind != False:
+    if isFind is not False:
         config.setConfig(reg_currentPython,pythonVersion)
         print(f"成功切换python版本为 {pythonVersion} ")
-        os.system("python -V")
-        os.system("pip -V")
-        print("\n")
         print("[需要管理员权限] 尝试添加Scripts目录到环境变量 (使pip安装的脚本能运行)")
         lastPipDir = config.getConfig(reg_pipDir)
         if lastPipDir != False:
@@ -216,6 +213,7 @@ def changePython(pythonVersion):
             print("添加pipdir失败，是否以管理员身份运行")
     else:
         print(f"没有找到版本 {pythonVersion}")
+    os.system("pause")
     return isFind
 
 # def setLocalEnvironment(pythonVersion):
