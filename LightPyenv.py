@@ -213,7 +213,6 @@ def changePython(pythonVersion):
             print("添加pipdir失败，是否以管理员身份运行")
     else:
         print(f"没有找到版本 {pythonVersion}")
-    os.system("pause")
     return isFind
 
 # def setLocalEnvironment(pythonVersion):
@@ -271,6 +270,7 @@ def main():
             print(f"set {reg_pythonsDir} to {args.path}")
     if args.globals is not None:
         changePython(args.globals)
+    os.system("pause")
 
 
 if __name__ == "__main__":
