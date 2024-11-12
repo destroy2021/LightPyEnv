@@ -65,6 +65,7 @@ def uninstall():
     except Exception as e:
         print(f"Uninstall Error: {e}")
         return
+    os.system("pause")
 
 
 def install():
@@ -86,6 +87,7 @@ def install():
         config.setConfig(reg_envPath,envPath)
     except Exception as e:
         print(f"Install Error: {e}")
+    os.system("pause")
 
 def findFile(directory, filename, use_regex : bool = False) -> os.DirEntry:
     with os.scandir(directory) as it:
@@ -159,6 +161,7 @@ def listPython(path):
         else:
             print(f"\t{pythonDir['pythonDir'].name} --> {pythonDir['version']} => {pythonDir['python'].path}")
     print("\n")
+    os.system("pause")
     return pythonDirs
 
 def changePython(pythonVersion):
@@ -213,6 +216,7 @@ def changePython(pythonVersion):
             print("添加pipdir失败，是否以管理员身份运行")
     else:
         print(f"没有找到版本 {pythonVersion}")
+    os.system("pause")
     return isFind
 
 # def setLocalEnvironment(pythonVersion):
